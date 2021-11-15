@@ -37,3 +37,21 @@
     transform: rotate(360deg);
   }
 }
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+form {
+  width: 100%; 
+  margin: 0 auto !important;
+}
+
+.inputgroup {
+  display: flex !important;
+}
+
+input {
+  max-width: 70%;
+}
