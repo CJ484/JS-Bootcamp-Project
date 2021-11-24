@@ -1,21 +1,25 @@
+#root {
+  background-color: #EF8354;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
-    filter: hue-rotate(280deg)
+    filter: hue-rotate(330deg)
   }
 }
 
 .App-header {
-  background-color: #6985bb;
+  background-color: whitesmoke;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -48,10 +52,56 @@ form {
   margin: 0 auto !important;
 }
 
-.inputgroup {
-  display: flex !important;
-}
-
 input {
   max-width: 70%;
+}
+
+.Heading {
+  background-color: #EE4B6A;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2 , p, .card h3, h3 {
+  color: #D8A47F;
+}
+
+h5 {
+  color: #3468f8;
+}
+
+.fa-search {
+  color: whitesmoke;
+}
+
+nav a::hover {
+  color: #3479f8
+}
+
+a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  padding: 10px 0;
+}
+
+.btn {
+  background-color: #DF3B57;
+}
+
+.fa-heart {
+  color: red;
+}
+
+.home * {
+  margin: 6px 0;
 }

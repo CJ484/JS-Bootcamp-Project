@@ -1,65 +1,60 @@
 import React, { Component } from 'react';
-import Search from './Components/First';
-import Likes from './Components/Second';
-import ImageCard from './Components/Third';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import db from './config/firebase-setup';
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore/lite";
 import './App.css';
-import concept from './apple.svg'
+
+//Components
+// import Search from './Components/SearchComponent';
+// import ImageCard from './Components/RecipeCardComponent';
+
+//Pages
+import LikePage from './pages/Like-page';
+import Home from './pages/Home';
+import Us from './pages/AboutUs';
+
 
 export default class App extends Component {
-
-  state = {
-    recipe: {}
-  }
-
-  componentDidMount() {
-    // this.recipeSearch('garlic');
-    // this.ingredientList(4632);
-  }
-
-  ingredientList = (foodId) => {
-    const apiUrl = `https://api.spoonacular.com/recipes/${foodId}/card`
-    fetch(apiUrl)
-    .then((result) => {
-      console.log(result)
-      this.setState({
-        recipe: result
-      })
-    })
-    .catch((error) => {
-      console.log('error', error);
+  
+  //This is will display the Food ID that has been saved in the Firebase Console under favorites
+  showFavorites = async () => {
+    const collectData = collection(db, 'favorites')
+    const fetchingData = await getDocs(collectData)
+    
+    const favoritesData = [];
+    
+    favoritesData.forEach(doc => {
+      fetchingData.push()
     })
   }
 
-  recipeSearch = (searchIndex) => {
-    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=77ece5c1f850423c989b8d31311e036a&query=${searchIndex}&includeIngredients`
-    fetch(apiUrl)
-    .then((results) => {
-      return results.json();
-    })
-    .then((parsedReponse) => {
-      this.setState({
-        recipe: parsedReponse
-      }, () => {
-        console.log(this.state.recipe);
-      })
-    })
-    .catch((error) => {
-      console.log('error', error);
-    })
+  removeFromFavorite = async foodID => {
+    const collectData = collection(db, "favorites");
+    const fetchingData = doc(collectData, foodID);
+    await deleteDoc(fetchingData);
+    this.showFavorites();
   }
 
+  //This will render different routes that have been linked to its appropiate tabs
   render() {
     return (
-      <main className="p-1">
+      <main>
         <div className="App">
+            <nav className="Heading">
+              <NavLink exact to='/'>Home</NavLink>
+              <NavLink exact to ='/favorites'>Favorite</NavLink>
+              <NavLink exact to='/about-us'>About us</NavLink>
+            </nav>
           <div className="App-header">
-            <div className="d-flex">
-              <Search />
-              <Likes />
-            </div>  
-            <img src={concept} className="App-logo" alt="logo" />
-            <h1>Foodie</h1>
-            <ImageCard />
+            <div className="d-flex flex-column">
+              <div>
+                <Routes>
+                  <Route exact path ='/' element={<Home />} />
+                  <Route exact path='/favorites' element={<LikePage/>} />
+                  <Route exact path='/about-us' element={<Us />} />
+                </Routes>
+              </div>
+            </div>
           </div>
         </div>
       </main>
