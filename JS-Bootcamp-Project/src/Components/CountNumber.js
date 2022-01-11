@@ -17,7 +17,6 @@ export default class ContributionCount extends React.Component {
     showNumber = async () => {
         const ParsedNumber = await getDocs(collectData);
         console.log(ParsedNumber);
-        const List =[];
         ParsedNumber.forEach(doc => {
             console.log(doc);
             const eachDoc = {

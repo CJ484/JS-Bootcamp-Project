@@ -12,6 +12,7 @@ import './App.css';
 import LikePage from './pages/Like-page';
 import Home from './pages/Home';
 import Us from './pages/AboutUs';
+import Clock from './pages/Clock';
 
 
 export default class App extends Component {
@@ -41,17 +42,19 @@ export default class App extends Component {
       <main>
         <div className="App">
             <nav className="Heading">
-              <NavLink exact to='/'>Home</NavLink>
-              <NavLink exact to ='/favorites'>Favorite</NavLink>
-              <NavLink exact to='/about-us'>About us</NavLink>
+              <NavLink exact="true" to='/'>Home</NavLink>
+              <NavLink exact="true" to='/favorites'>Favorite</NavLink>
+              <NavLink exact="true" to='/about-us'>About us</NavLink>
+              <NavLink exact="true" to='/clock'>Clock</NavLink>
             </nav>
           <div className="App-header">
             <div className="d-flex flex-column">
               <div>
                 <Routes>
-                  <Route exact path ='/' element={<Home />} />
-                  <Route exact path='/favorites' element={<LikePage/>} />
-                  <Route exact path='/about-us' element={<Us />} />
+                  <Route exact="true" path='/' element={<Home />} />
+                  <Route exact="true" path='/favorites' element={<LikePage />} />
+                  <Route exact="true" path='/about-us' element={<Us />} />
+                  <Route exact="true" path='/clock' element={<Clock />} />
                 </Routes>
               </div>
             </div>

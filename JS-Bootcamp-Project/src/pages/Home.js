@@ -1,7 +1,7 @@
 import React from "react";
 import concept from '../apple.svg'
 import Search from '../Components/SearchComponent'
-import ImageCard from "../Components/RecipeCardComponent";
+// import ImageCard from "../Components/RecipeCardComponent";
 
 
 export default function Home(props) {
