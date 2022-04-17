@@ -8,7 +8,7 @@ export default function Home(props) {
   
     return (
       <div className="home">
-        <h1>Rev up those Fryers, Its Time To Cook</h1>
+        <h1>Rev up those Fryers, Cause I am one hungry Big Chungus</h1>
         <img src={concept} className="App-logo" alt="logo" />
         <h2>Foodie</h2>
         {/* <ImageCard /> */}

@@ -26,13 +26,13 @@ export default class Search extends React.Component {
         
         return results.json();
       })
-      .then((parsedReponse) => {
+      .then((parsedResponse) => {
         this.setState(
           {
-            recipe: parsedReponse.results,
+            recipe: parsedResponse.results,
           },
           () => {
-            console.log(parsedReponse);
+            console.log(parsedResponse);
             console.log(this.state.recipe);
           }
         );
@@ -58,29 +58,31 @@ export default class Search extends React.Component {
 
   nextResults = () => {
     this.setState({ page: this.state.page + 9 });
-    this.recipeSearch('pasta', this.state.page)
-    window.scrollTo(0, 0)
+    this.recipeSearch('pasta', this.state.page);
+    window.scrollTo(0, 0);
   }
 
   backResults = () => {
     this.setState({ page: this.state.page - 9});
-    this.recipeSearch('pasta', this.state.page)
-    window.scrollTo(0, 0)
+    this.recipeSearch('pasta', this.state.page);
+    window.scrollTo(0, 0);
   }
 
   addToFavorites = async (object) => {
     await addDoc(collectData, {
-      favFoodId: object.id 
+      favFoodId: object 
     })
+    // console.log(object);
   }
 
   render() {
     const foodCard = this.state.recipe.map((object, i) => {
+      console.log(object);
         return (
           <div key={object.id} className="card p-3 m-3 col-md-3">
             <img src={object.image} alt={object.id} />
             <h3>{object.title}</h3>
-            <button><i className="fas fa-heart"></i></button>
+            <button onClick={() => {this.addToFavorites(object.id)}}><i className="fas fa-heart"></i></button>
           </div>
         );
     })
@@ -89,17 +91,17 @@ export default class Search extends React.Component {
         <div id="searchBar">
             <form onSubmit={this.onSubmit}>
                 <div className="input-group justify-content-center">
-                <input value={this.state.input} placeholder="Search..." className="form-control" onChange={this.onChange}></input>
-                <div className="input-group-append">
-                    <button className="btn btn-lg" type="submit"><i className="fas fa-search"></i></button>
-                </div>
+                  <input value={this.state.input} placeholder="Search..." className="form-control" onChange={this.onChange}></input>
+                  <div className="input-group-append">
+                      <button className="btn btn-lg" type="submit"><i className="fas fa-search"></i></button>
+                  </div>
                 </div>
             </form>
             <div className="row d-flex justify-content-md-center">
               {foodCard.length > 0 ? foodCard : ''}
               <div className="d-flex justify-content-around">
-                <a><button className="btn" onClick={this.nextResults}><h4>Back</h4></button></a>
-                <a><button className="btn" onClick={this.nextResults}><h4>Next</h4></button></a>
+                {/* <a><button className="btn" onClick={this.nextResults}><h4>Back</h4></button></a>
+                <a><button className="btn" onClick={this.nextResults}><h4>Next</h4></button></a> */}
               </div>
             </div>
         </div>
