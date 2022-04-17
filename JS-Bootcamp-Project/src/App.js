@@ -36,6 +36,14 @@ export default class App extends Component {
     this.showFavorites();
   }
 
+  darkModeToggle = () => {
+    let targetBody = document.querySelector("#root");
+    let targetApp = document.querySelector(".App-header");
+    targetBody.classList.toggle("toggleDarkMode");
+    targetApp.classList.toggle("appDark");
+
+  }
+
   //This will render different routes that have been linked to its appropiate tabs
   render() {
     return (
@@ -46,6 +54,13 @@ export default class App extends Component {
               <NavLink exact="true" to='/favorites'>Favorite</NavLink>
               <NavLink exact="true" to='/about-us'>About us</NavLink>
               <NavLink exact="true" to='/clock'>Clock</NavLink>
+              <div className='darkMode'>
+                <label className='switch'>
+                  <input defaultChecked={false} className="darkInput" type="checkbox" onChange={()=> {this.darkModeToggle()}}/>
+                  <span className='slider round'></span>
+                </label>
+                <h5>Dark Mode</h5>
+              </div>
             </nav>
           <div className="App-header">
             <div className="d-flex flex-column">

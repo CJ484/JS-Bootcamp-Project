@@ -1,0 +1,62 @@
+:root {
+    --background: rgb(1,1,1)
+    --main: #454545;
+} 
+
+.App-header {
+    background-color: whitesmoke;
+    color: white;
+}
+
+h1,
+h2,
+p,
+.card h3,
+h3 {
+    color: #D8A47F;
+}
+
+h5 {
+    color: rgb(49, 160, 240);
+}
+
+.Heading {
+    background-color: #EE4B6A;
+}
+
+.fa-search {
+    color: whitesmoke;
+}
+
+nav a::hover {
+    color: #3479f8
+}
+
+.btn {
+    background-color: #DF3B57;
+}
+
+.fa-heart {
+    color: red;
+}
+
+/* slider */
+
+.slider {
+    background-color: #ccc;
+}
+
+.slider:before {
+    background-color: white;
+}
+
+input:checked+.slider {
+    background-color: #2196f3;
+}
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196f3;
+}
+
+.darkMode h5 {
+    color: #61dafb;
+}
