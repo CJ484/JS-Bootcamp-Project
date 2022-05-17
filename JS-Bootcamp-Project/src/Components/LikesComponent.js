@@ -18,12 +18,11 @@ const db = getFirestore(app);
 export default class Likes extends React.Component {
     state = {
         List: [],
-        dataReceived: "null"
+        dataReceived: null
     }
 
     componentDidMount() {
         this.displayData();
-        this.setState({})
     }
     
     displayData = async () => {
@@ -60,21 +59,6 @@ export default class Likes extends React.Component {
         )
     }
 
-    // test = () => {
-    //     const favFoodCard = this.state.List.map((object) => {
-    //       return (
-    //         <div key={object.key} className="card p-3 m-3 col-md-3">
-    //           <img src={object.img} alt={object.id} />
-    //           <h3>{object.title}</h3>
-    //           <button>
-    //             <i className="fas fa-heart"></i>
-    //           </button>
-    //         </div>
-    //       );
-    //     });
-
-    //     return favFoodCard;
-    // }
     update = () => {
       this.forceUpdate();
     }
@@ -84,9 +68,10 @@ export default class Likes extends React.Component {
         return (
           <div>
             <h2>This is a render of the Likes Component...</h2>
-            <div className="d-flex justify-content-md-center">
+            <div className="listData d-flex justify-content-md-center">
               <ListData dataReceived={this.state.List}/>
             </div>
+            <div></div>
             <button onClick={this.update}>Click!!</button>
           </div>
         );

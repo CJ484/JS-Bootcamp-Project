@@ -68,11 +68,10 @@ export default class Search extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  addToFavorites = async (object) => {
+  addToFavorites = async (object) => {          //When the Heart button on a searched card is clicked it will add to the local firebase database
     await addDoc(collectData, {
       favFoodId: object 
     })
-    // console.log(object);
   }
 
   render() {
@@ -82,7 +81,7 @@ export default class Search extends React.Component {
           <div key={object.id} className="card p-3 m-3 col-md-3">
             <img src={object.image} alt={object.id} />
             <h3>{object.title}</h3>
-            <button onClick={() => {this.addToFavorites(object.id)}}><i className="fas fa-heart"></i></button>
+            <button className="likeButton" onClick={() => {this.addToFavorites(object.id); console.log("Added to DataBase");}}><i className="fas fa-heart"></i></button>
           </div>
         );
     })

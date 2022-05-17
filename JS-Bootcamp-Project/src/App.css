@@ -107,6 +107,63 @@ a {
   margin: 6px 0;
 }
 
+/* food card */
+
+.card {
+  background-color: #fecadc;
+  min-height: 280px;
+}
+.card img {
+  width: 100%;
+}
+
+.card h3 {
+  color:#31a0f0;
+}
+
+.card .shareButton {
+  background-color: transparent;
+  position: absolute;
+  border: none;
+  bottom: 8px;
+  right: 10px;
+}
+
+/* favorites food card */
+
+.listData {
+  flex-wrap: wrap;
+}
+
+.favorites {
+  border: none;
+  flex-wrap: wrap;
+}
+
+.favorites .fa-circle-xmark {
+  color: #dd0000;
+}
+
+.favorites .fa-circle-xmark::before {
+  background: rgba(255, 247, 0, 0.7);
+  border-radius: 35px;
+}
+
+.deleteButton {
+  position: absolute;
+  background-size: 20%;
+  background: transparent;
+  border-radius: 35px;
+  top: -4%;
+  right: -6%;
+  cursor: pointer;
+  border: none;
+}
+
+.fa-circle-xmark:hover {
+  color: rgb(255, 29, 29);
+}
+
 /* Dark mode switch */
 
 .darkMode {
@@ -136,7 +193,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgb(247, 172, 172);
   -webkit-transition: .4s;
   transition: .4s
 }
@@ -190,4 +247,10 @@ input:checked + .slider:before {
 
 .appDark {
   background-color: #505050 !important;
+}
+
+/* favorites page */
+
+.favorites {
+  flex-wrap: wrap;
 }
