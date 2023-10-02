@@ -3,6 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import db from './config/firebase-setup';
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore/lite";
 import './App.css';
+import $ from 'jquery'
 
 //Components
 // import Search from './Components/SearchComponent';
@@ -24,7 +25,7 @@ export default class App extends Component {
     
     const favoritesData = [];
     
-    favoritesData.forEach(doc => {
+    favoritesData.forEach((doc) => {
       fetchingData.push()
     })
   }
@@ -44,6 +45,18 @@ export default class App extends Component {
 
   }
 
+  update = () => {
+    this.forceUpdate();
+  }
+
+  viewFavorite= () => {
+    console.log("test 1 is complete");
+    setTimeout(() => {
+      $(".loader-wrapper").fadeOut("slow");
+      console.log("test loading");
+    }, 3000);
+  }
+
   //This will render different routes that have been linked to its appropiate tabs
   render() {
     return (
@@ -51,7 +64,7 @@ export default class App extends Component {
         <div className="App">
             <nav className="Heading">
               <NavLink exact="true" to='/'>Home</NavLink>
-              <NavLink exact="true" to='/favorites'>Favorite</NavLink>
+              <NavLink onClick={() => this.viewFavorite()} id="favorite" exact="true" to='/favorites'>Favorite</NavLink>
               <NavLink exact="true" to='/about-us'>About us</NavLink>
               <NavLink exact="true" to='/clock'>Clock</NavLink>
               <div className='darkMode'>

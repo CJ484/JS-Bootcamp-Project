@@ -2,6 +2,7 @@ import React from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore/lite";
 import { initializeApp } from "firebase/app";
 import ListData from "./DisplayLikes";
+import LoadingIndicator from "./InnerLoadingIndicator";
 
 //This Component will receive all data from the firebase marked for the recipes that the users have liked
 const firebaseConfig = {
@@ -22,10 +23,11 @@ export default class Likes extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this)
         this.displayData();
     }
     
-    displayData = async () => {
+    async displayData () {
         const collectData = collection(db, 'favorites');
         const awaitData = await getDocs(collectData);
         const holdThat = [];
@@ -59,6 +61,12 @@ export default class Likes extends React.Component {
         )
     }
 
+    // display = () => {
+    //     setTimeout(() => {
+            
+    //     })
+    // }
+
     update = () => {
       this.forceUpdate();
     }
@@ -69,10 +77,14 @@ export default class Likes extends React.Component {
           <div>
             <h2>This is a render of the Likes Component...</h2>
             <div className="listData d-flex justify-content-md-center">
-              <ListData dataReceived={this.state.List}/>
+                {/* <LoadingIndicator/> */}
+                <ListData dataReceived={this.state.List}/>
             </div>
             <div></div>
             <button onClick={this.update}>Click!!</button>
+          <div className="loader-wrapper">
+            <span className="loader"><span className="loader-inner"></span></span>
+          </div>
           </div>
         );
     }
